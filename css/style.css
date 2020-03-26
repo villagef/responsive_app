@@ -1,3 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Sniglet-font: "Sniglet", cursive;
+    --Rubik: "Rubik", cursive;
+    --light-black: #2e2c2caf;
+    --bggradient: linear-gradient(to bottom, #189099, #013e42);
+    --light-gray: rgba(255, 255, 255, 0.877);
+}
+
 html {
     margin: 0;
     padding: 0;
@@ -9,7 +23,6 @@ body {
     padding: 0;
     width: 100%;
     box-sizing: border-box;
-    background-color: white;
 }
 
 .wrapper {
@@ -21,43 +34,57 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3.5rem;
+    height: 3rem;
     z-index: 100;
 }
 
-.navigation {
+nav {
     height: 100%;
 }
 
-.navbar ul {
-    list-style: none;
+.navigation {
+    display: flex;
+    height: 100%;
+}
+
+.logo {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.logo p {
+    color: var(--light-gray);
+    font-size: 26px;
+    font-family: var(--Rubik);
     margin: 0;
-    padding: 0;
+    padding: 0 20px;
 }
 
-.navbar li {
-    padding: 0 1.5rem;
+.linksWrapper {
+    flex: 2;
 }
 
-.navbar a {
+.nav-links {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-links li a {
+    color: var(--light-gray);
     text-decoration: none;
-    color: rgb(222, 223, 210);
+    font-size: 18px;
+    font-family: var(--Rubik);
     letter-spacing: 2px;
-    font-size: 20px;
 }
 
-.navbar p {
-    font-size: 30px;
-    color: rgb(222, 223, 210);
-}
-
-.navbar a:hover, .navbar a:active {
-    color: rgb(22, 110, 133);
-}
-
-.navbar-brand span {
-    color: rgb(40, 87, 105);
-    font-weight: bold;
+.nav-links a:hover, .nav-links a:active, .nav-links.active {
+    color: #189099;
 }
 
 /* -------------------main-------------------*/
@@ -104,7 +131,8 @@ body {
     bottom: 50%;
     transform: translateY(-50%, -100px);
     width: 100%;
-    color: rgb(222, 223, 210);
+    color: var(--light-gray);
+    font-family: var(--Rubik);
 }
 
 .row {
@@ -112,10 +140,10 @@ body {
     justify-content: center;
 }
 
-/*-------------------------------------------------*/
+/*-----------------about--------------------*/
 
 .about {
-    padding: 20vmin 0vmin;
+    padding: 10vmin 0vmin;
 }
 
 .about .row .col-md-6 .pray img {
@@ -152,17 +180,21 @@ body {
     color: rgba(0, 0, 0, 0.5);
 }
 
-/*-------------------------------------------------*/
+/*------------------portfolio----------------------*/
 
 .portfolio {
     display: flex;
     flex-direction: column;
+    padding: 10vmin 0 10vmin 0;
+    background: var(--bggradient);
 }
 
 .portfolio h1 {
     display: flex;
     justify-content: center;
     font-family: 'Raleway', sans-serif;
+    font-family: var(--Rubik);
+    color: var(--light-gray);
 }
 
 .sliderWrapper {
@@ -181,7 +213,7 @@ body {
 
 /*-------------------------------------------------*/
 
-@keyframes drop {
+/* @keyframes drop {
     0% {
         opacity: 0;
         transform: translateY(-80px);
@@ -190,23 +222,9 @@ body {
         opacity: 1;
         transform: translateY(0px);
     }
-}
+} */
 
 @media screen and (max-width:1320px) {
-    .navbar li {
-        padding: 0 1rem;
-    }
-    .navbar a {
-        letter-spacing: 1px;
-        font-size: 18px;
-    }
-    .navbar p {
-        font-size: 24px;
-    }
-    .logoImage {
-        width: 7rem;
-        background-color: white;
-    }
     .content {
         bottom: 40%;
         transform: translateY(-40%, -100px);
@@ -214,26 +232,149 @@ body {
 }
 
 @media screen and (max-width:1024px) {
-    .navbar li {
-        padding: 0 0.5rem;
-    }
-    .navbar a {
-        letter-spacing: 1px;
-        font-size: 18px;
-    }
-    .navbar p {
-        font-size: 20px;
-    }
-    .logoImage {
-        width: 5rem;
-        background-color: white;
-    }
     .content {
-        position: absolute;
-        left: 0;
         bottom: 30%;
         transform: translateY(-30%, -100px);
-        color: #f1f1f1;
+    }
+    .content h6 {
+        font-size: 24px;
+    }
+    .content h1 {
+        font-size: 20px;
+    }
+    .content p {
+        font-size: 15px;
+    }
+    .portfolio h1 {
+        font-size: 28px;
+    }
+    .carousel {
+        width: 80%;
+        height: 80%;
+    }
+    .about {
+        padding: 10vmin 0vmin;
+    }
+    .about .row .col-md-6 .pray img {
+        opacity: 0.8;
+        width: 80%;
+        border-radius: 0.2em;
+    }
+    .about .row .col-md-6:last-child {
+        position: relative;
+    }
+    .about .row .col-md-6 .panel {
+        position: absolute;
+        top: 7vmin;
+        left: -18vmin;
+    }
+    .about .row .col-md-6 .panel h1 {
+        font-weight: bold;
+        padding: 0.4em 0;
+        font-size: 2em;
+    }
+    .about .row .col-md-6 .panel p {
+        font-size: 0.9em;
+        color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .logo {
+        display: none;
+    }
+    .bar {
+        width: 30px;
+        height: 3px;
+        background-color: #189099;
+        margin: 5px;
+        border-radius: 3px;
+    }
+    nav {
+        position: relative;
+    }
+    .burger {
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+    }
+    .nav-links {
+        position: fixed;
+        background-color: rgb(15, 15, 15);
+        opacity: 0.7;
+        height: 100vh;
         width: 100%;
+        flex-direction: column;
+        clip-path: circle(100px at 90% -20%);
+        -webkit-clip-path: circle(100px at 90% -20%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .nav-links.open {
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+    .content {
+        bottom: 30%;
+        transform: translateY(-30%, -100px);
+    }
+    .content h6 {
+        font-size: 20px;
+    }
+    .content h1 {
+        font-size: 16px;
+    }
+    .content p {
+        font-size: 13px;
+    }
+    /*---------------about-------------*/
+    .about .row .col-md-6 .pray img {
+        width: 80%;
+        padding-bottom: 20px;
+    }
+    .about .row .col-md-6 .panel {
+        position: initial;
+        width: initial;
+        height: initial;
+        padding: 8vmin 8vmin 10vmin 8vmin;
+    }
+    .about .row .col-md-6 .panel h1 {
+        padding: 0.4em 0;
+        font-size: 2em;
+    }
+    .about .row .col-md-6 .panel p {
+        font-size: 0.9em;
+    }
+    /*---------------portfolio-------------*/
+    .portfolio h1 {
+        font-size: 28px;
+    }
+    .carousel {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .content {
+        bottom: 10%;
+        transform: translateY(-10%, -100px);
+    }
+    .content h6 {
+        font-size: 16px;
+    }
+    .content h1 {
+        font-size: 14px;
+    }
+    .content p {
+        font-size: 10px;
+    }
+    .carousel {
+        width: 100%;
+        height: 100%;
     }
 }
