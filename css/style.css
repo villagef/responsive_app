@@ -1,6 +1,7 @@
 html {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -8,10 +9,10 @@ body {
     padding: 0;
     width: 100%;
     box-sizing: border-box;
+    background-color: white;
 }
 
 .wrapper {
-    /* overflow: hidden; */
     width: 100%;
 }
 
@@ -28,10 +29,6 @@ body {
     height: 100%;
 }
 
-.nav-link {
-    opacity: unset;
-}
-
 .navbar ul {
     list-style: none;
     margin: 0;
@@ -44,23 +41,26 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: rgb(222, 223, 210);
     letter-spacing: 2px;
     font-size: 20px;
 }
 
 .navbar p {
     font-size: 30px;
+    color: rgb(222, 223, 210);
 }
 
 .navbar a:hover, .navbar a:active {
     color: rgb(22, 110, 133);
 }
 
-.logoImage {
-    width: 10rem;
-    background-color: white;
+.navbar-brand span {
+    color: rgb(40, 87, 105);
+    font-weight: bold;
 }
+
+/* -------------------main-------------------*/
 
 .mainContainer {
     display: flex;
@@ -72,19 +72,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-}
-
-.myVideo {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-size: cover;
-    color: #efefef;
-    z-index: -2;
-    background-repeat: no-repeat;
+    height: 100%;
 }
 
 .overlay {
@@ -95,7 +83,19 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
+    height: 100%;
+    width: 100%;
     z-index: -1;
+}
+
+.myVideo {
+    position: relative;
+    width: 100%;
+    display: block;
+    height: auto;
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .content {
@@ -103,17 +103,137 @@ body {
     left: 0;
     bottom: 50%;
     transform: translateY(-50%, -100px);
-    color: #f1f1f1;
     width: 100%;
-}
-
-.course {
-    width: 100%;
-    height: 1000px;
-    background-color: rgb(204, 195, 67);
+    color: rgb(222, 223, 210);
 }
 
 .row {
     display: flex;
     justify-content: center;
+}
+
+/*-------------------------------------------------*/
+
+.about {
+    padding: 20vmin 0vmin;
+}
+
+.about .row .col-md-6 .pray img {
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+}
+
+.about .row .col-md-6:last-child {
+    position: relative;
+}
+
+.about .row .col-md-6 .panel {
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 5vmin 20vmin 10vmin;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+    font-family: var(--Rubik);
+    z-index: 1;
+}
+
+.about .row .col-md-6 .panel h1 {
+    font-weight: bold;
+    padding: 0.4em 0;
+    font-size: 2em;
+}
+
+.about .row .col-md-6 .panel p {
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/*-------------------------------------------------*/
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio h1 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.sliderWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.carousel {
+    width: 70%;
+    height: 70%;
+    -webkit-box-shadow: 5px 5px 12px 14px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 5px 5px 12px 14px rgba(0, 0, 0, 0.06);
+    box-shadow: 5px 5px 12px 14px rgba(0, 0, 0, 0.06);
+}
+
+/*-------------------------------------------------*/
+
+@keyframes drop {
+    0% {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (max-width:1320px) {
+    .navbar li {
+        padding: 0 1rem;
+    }
+    .navbar a {
+        letter-spacing: 1px;
+        font-size: 18px;
+    }
+    .navbar p {
+        font-size: 24px;
+    }
+    .logoImage {
+        width: 7rem;
+        background-color: white;
+    }
+    .content {
+        bottom: 40%;
+        transform: translateY(-40%, -100px);
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .navbar li {
+        padding: 0 0.5rem;
+    }
+    .navbar a {
+        letter-spacing: 1px;
+        font-size: 18px;
+    }
+    .navbar p {
+        font-size: 20px;
+    }
+    .logoImage {
+        width: 5rem;
+        background-color: white;
+    }
+    .content {
+        position: absolute;
+        left: 0;
+        bottom: 30%;
+        transform: translateY(-30%, -100px);
+        color: #f1f1f1;
+        width: 100%;
+    }
 }
