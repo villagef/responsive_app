@@ -11,22 +11,14 @@
   --bggradient: linear-gradient(to bottom, #189099, #013e42);
   --light-gray: rgba(247, 247, 224, 0.877);
   --light-white: rgb(243, 242, 242);
+  --green-blue: #189099;
 }
 
 html {
-  margin: 0;
-  padding: 0;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.wrapper {
   width: 100%;
 }
 
@@ -37,10 +29,6 @@ body {
   width: 100%;
   height: 3rem;
   z-index: 100;
-}
-
-nav {
-  height: 100%;
 }
 
 .navigation {
@@ -64,7 +52,7 @@ nav {
   padding: 0 20px;
 }
 .logo span {
-  color: #189099;
+  color: var(--green-blue);
 }
 
 .linksWrapper {
@@ -90,7 +78,7 @@ nav {
 .nav-links a:hover,
 .nav-links a:active,
 .nav-links.active {
-  color: #189099;
+  color: var(--green-blue);
 }
 
 /* -------------------main-------------------*/
@@ -135,7 +123,7 @@ nav {
   position: absolute;
   left: 0;
   bottom: 50%;
-  transform: translateY(-50%, -100px);
+  transform: translateY(-50%, -50%);
   width: 100%;
   color: var(--light-gray);
   font-family: var(--Rubik);
@@ -189,24 +177,14 @@ nav {
 /*------------------portfolio----------------------*/
 
 .portfolio {
-  display: flex;
-  flex-direction: column;
   padding: 10vmin 0 10vmin 0;
   background: var(--bggradient);
-}
-
-.portfolio h1 {
-  display: flex;
-  justify-content: center;
-  font-family: "Raleway", sans-serif;
-  font-family: var(--Rubik);
-  color: var(--light-white);
 }
 
 .sliderWrapper {
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  margin: 0 auto;
 }
 
 .carousel {
@@ -219,34 +197,58 @@ nav {
 
 #sticky-footer {
   flex-shrink: none;
-  background-color: var(--light-black);
+  background-color: rgb(3, 3, 3);
 }
 
-/*-------------------------------------------------*/
+/*---------------------skills---------------------*/
 
-/* @keyframes drop {
-    0% {
-        opacity: 0;
-        transform: translateY(-80px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-} */
-
-@media screen and (max-width: 1320px) {
-  .content {
-    bottom: 40%;
-    transform: translateY(-40%, -100px);
-  }
+.skillsWrapper {
+  /* padding: 100px; */
+  /* width: 90%; */
+  margin: 15% 0;
 }
+.skillsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+div[class^="tag-"] {
+  width: 120px;
+  height: 30px;
+  margin-right: 30px;
+}
+div[class^="tag-"] p {
+  color: rgb(8, 8, 8);
+  text-align: left;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  padding-top: 3px;
+  font-weight: bold;
+  font-family: var(--Rubik);
+}
+.progressbar {
+  position: relative;
+  width: 600px;
+  height: 20px;
+  border: 2px solid var(--green-blue);
+  border-radius: 20px;
+  margin-top: 7px;
+  -webkit-box-shadow: 5px 5px 12px 14px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 5px 5px 12px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: 5px 5px 12px 14px rgba(0, 0, 0, 0.06);
+}
+div[class^="bar-"] {
+  position: absolute;
+  background-color: var(--green-blue);
+  height: 100%;
+  border-radius: 20px;
+}
+
+/*---------------------media---------------------*/
 
 @media screen and (max-width: 1024px) {
-  .content {
-    bottom: 30%;
-    transform: translateY(-30%, -100px);
-  }
   .content h6 {
     font-size: 24px;
   }
@@ -260,8 +262,9 @@ nav {
     font-size: 28px;
   }
   .carousel {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
   }
   .about {
     padding: 10vmin 0vmin;
@@ -269,24 +272,13 @@ nav {
   .about .row .col-md-6 .pray img {
     opacity: 0.8;
     width: 80%;
-    border-radius: 0.2em;
-  }
-  .about .row .col-md-6:last-child {
-    position: relative;
+    left: -18vmin;
   }
   .about .row .col-md-6 .panel {
     position: absolute;
     top: 7vmin;
     left: -18vmin;
-  }
-  .about .row .col-md-6 .panel h1 {
-    font-weight: bold;
-    padding: 0.4em 0;
-    font-size: 2em;
-  }
-  .about .row .col-md-6 .panel p {
-    font-size: 0.9em;
-    color: rgba(0, 0, 0, 0.5);
+    padding: 8vmin 8vmin 10vmin 9vmin;
   }
 }
 
@@ -297,12 +289,13 @@ nav {
   .bar {
     width: 30px;
     height: 3px;
-    background-color: #189099;
+    background-color: var(--green-blue);
     margin: 5px;
     border-radius: 3px;
   }
   nav {
     position: relative;
+    height: 100%;
   }
   .burger {
     position: absolute;
@@ -351,7 +344,7 @@ nav {
     position: initial;
     width: initial;
     height: initial;
-    padding: 8vmin 8vmin 10vmin 8vmin;
+    padding: 8vmin 8vmin 10vmin 9vmin;
   }
   .about .row .col-md-6 .panel h1 {
     padding: 0.4em 0;
@@ -365,8 +358,11 @@ nav {
     font-size: 28px;
   }
   .carousel {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
+  }
+  .skillsWrapper {
+    padding: 60px;
   }
 }
 
