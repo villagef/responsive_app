@@ -1,3 +1,4 @@
+////////////////navbar//////////////////////////////
 const burger = document.querySelector(".burger");
 const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
@@ -77,8 +78,9 @@ function validation() {
   return false;
 }
 
+///////////// googlemap//////////////////////////
+
 function initMap() {
-  // Styles a map in night mode.
   var map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.674, lng: -73.945 },
     zoom: 12,
@@ -164,3 +166,66 @@ function initMap() {
     ],
   });
 }
+//////////////profile picture/////////////////////
+
+const pray = document.querySelector(".pray");
+const inner = document.querySelector("#inner");
+
+const onMouseEnterHandler = function (event) {
+  update(event);
+};
+const onMouseLeaveHandler = function () {
+  inner.style = "";
+};
+const onMouseMoveHandler = function (event) {
+  if (isTimeToUpdate()) {
+    update(event);
+  }
+};
+
+pray.onmouseenter = onMouseEnterHandler;
+pray.onmouseleave = onMouseLeaveHandler;
+pray.onmousemove = onMouseMoveHandler;
+
+let counter = 0;
+let updateRate = 10;
+const isTimeToUpdate = function () {
+  return counter++ % updateRate === 0;
+};
+
+let mouse = {
+  _x: 0,
+  _y: 0,
+  x: 0,
+  y: 0,
+  updatePosition: function (event) {
+    let e = event || window.event;
+    this.x = e.clientX - this._x;
+    this.y = (e.clientY - this._y) * -1;
+  },
+  setOrigin: function (e) {
+    this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
+    this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
+  },
+  show: function () {
+    return "(" + this.x + ", " + this.y + ")";
+  },
+};
+mouse.setOrigin(pray);
+
+const update = function (event) {
+  mouse.updatePosition(event);
+  updateTransformStyle(
+    (mouse.y / inner.offsetHeight / 2).toFixed(2),
+    (mouse.x / inner.offsetWidth / 2).toFixed(2)
+  );
+};
+
+const updateTransformStyle = function (x, y) {
+  let style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+  inner.style.transform = style;
+  inner.style.webkitTransform = style;
+  inner.style.mozTransform = style;
+  inner.style.msTransform = style;
+  inner.style.oTransform = style;
+};

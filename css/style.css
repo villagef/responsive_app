@@ -42,6 +42,7 @@ body {
   display: flex;
   justify-content: start;
   align-items: center;
+  margin: 10px;
 }
 
 .logo p {
@@ -63,8 +64,11 @@ body {
   display: flex;
   list-style: none;
   height: 100%;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
+}
+.nav-links li {
+  margin: 20px 0;
 }
 
 .nav-links li a {
@@ -81,6 +85,42 @@ body {
   color: var(--green-blue);
 }
 
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: var(--green-blue);
+  margin: 5px;
+  border-radius: 3px;
+}
+nav {
+  position: relative;
+  height: 100%;
+}
+.burger {
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 50%;
+  transform: translate(-5%, -50%);
+  z-index: 2;
+}
+.nav-links {
+  position: fixed;
+  background-color: rgb(15, 15, 15);
+  opacity: 0.7;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  clip-path: circle(10px at 90% -20%);
+  -webkit-clip-path: circle(10px at 90% -20%);
+  transition: all 1s ease-out;
+  pointer-events: none;
+}
+.nav-links.open {
+  clip-path: circle(1200px at 100% -5%);
+  -webkit-clip-path: circle(1200px at 100% -5%);
+  pointer-events: all;
+}
 /* -------------------main-------------------*/
 
 .mainContainer {
@@ -145,6 +185,12 @@ body {
   width: 80%;
   border-radius: 0.2em;
 }
+.pray {
+  perspective: 40px;
+}
+#inner {
+  transition: transform 0.5s;
+}
 
 .about .row .col-md-6:last-child {
   position: relative;
@@ -163,15 +209,36 @@ body {
   z-index: 1;
 }
 
-.about .row .col-md-6 .panel h1 {
-  font-weight: bold;
-  padding: 0.4em 0;
-  font-size: 2em;
-}
-
 .about .row .col-md-6 .panel p {
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.5);
+}
+.panel h1 {
+  display: flex;
+  justify-content: left;
+  letter-spacing: 7px;
+}
+.white {
+  color: white;
+}
+.panel h1 span {
+  font-weight: bold;
+  padding: 0.4em 0;
+  font-size: 24px;
+  animation: animate 2s ease-in-out infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
+  40%,
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /*------------------portfolio----------------------*/
@@ -241,7 +308,7 @@ div[class^="tag-"] p {
 }
 div[class^="bar-"] {
   position: absolute;
-  background-color: rgb(255, 225, 53);
+  background-color: #ffc107;
   height: 100%;
   border-radius: 20px;
 }
@@ -252,7 +319,7 @@ div[class^="bar-"] {
   height: 10%;
 }
 .contactTitle h1 {
-  padding-top: 20px;
+  margin-bottom: 100px;
   text-align: center;
   font-family: var(--Sniglet-font);
 }
@@ -261,24 +328,27 @@ div[class^="bar-"] {
   display: flex;
   flex-wrap: wrap;
   height: 90%;
+  justify-content: center;
 }
 .contactRight {
   width: 50%;
   height: 45vh;
-  /* background-color: orange; */
   order: 2;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 10px;
 }
 .contactLeft {
+  margin: 10px;
   width: 50%;
   height: 45vh;
-  margin-top: 20px;
   order: 1;
+  display: flex;
+  justify-content: center;
 }
 .contactBottom {
-  margin-top: 20px;
+  margin-top: 50px;
   width: 100%;
   height: 65vh;
   order: 3;
@@ -288,14 +358,18 @@ div[class^="bar-"] {
   height: 100%;
 }
 .contactForm {
-  max-width: 600px;
   width: 100%;
   padding: 25px;
+  -webkit-box-shadow: 0px 0px 8px 9px rgba(28, 28, 28, 0.14);
+  -moz-box-shadow: 0px 0px 8px 9px rgba(28, 28, 28, 0.14);
+  box-shadow: 0px 0px 8px 9px rgba(28, 28, 28, 0.14);
 }
 .contactInfo {
-  max-width: 600px;
   width: 100%;
   padding: 25px;
+  -webkit-box-shadow: 0px 0px 8px 9px rgba(28, 28, 28, 0.14);
+  -moz-box-shadow: 0px 0px 8px 9px rgba(28, 28, 28, 0.14);
+  box-shadow: 0px 0px 8px 9px rgba(28, 28, 28, 0.14);
 }
 .contactForm h2 {
   text-align: center;
@@ -330,7 +404,7 @@ div[class^="bar-"] {
   margin-top: 10px;
   padding: 10px;
   width: 100%;
-  background-color: var(--green-blue);
+  background-color: #ffc107;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-weight: bold;
@@ -472,9 +546,9 @@ div[class^="bar-"] {
     height: initial;
     padding: 8vmin 8vmin 10vmin 9vmin;
   }
-  .about .row .col-md-6 .panel h1 {
+  .panel h1 span {
     padding: 0.4em 0;
-    font-size: 2em;
+    font-size: 17px;
   }
   .about .row .col-md-6 .panel p {
     font-size: 0.9em;
@@ -489,6 +563,15 @@ div[class^="bar-"] {
   }
   .skillsWrapper {
     padding: 60px;
+  }
+  /*---------------contact---------------*/
+  .contactRight {
+    width: 100%;
+    margin: 20px;
+  }
+  .contactLeft {
+    width: 100%;
+    margin: 20px;
   }
 }
 
