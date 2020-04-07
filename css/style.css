@@ -324,13 +324,13 @@ div[class^="bar-"] {
   font-family: var(--Sniglet-font);
 }
 .contactContent {
-  /* background-color: red; */
   display: flex;
   flex-wrap: wrap;
   height: 90%;
-  justify-content: center;
+  justify-content: space-around;
 }
 .contactRight {
+  max-width: 700px;
   width: 50%;
   height: 45vh;
   order: 2;
@@ -340,6 +340,7 @@ div[class^="bar-"] {
   margin: 10px;
 }
 .contactLeft {
+  max-width: 700px;
   margin: 10px;
   width: 50%;
   height: 45vh;
@@ -480,6 +481,12 @@ div[class^="bar-"] {
     left: -18vmin;
     padding: 8vmin 8vmin 10vmin 9vmin;
   }
+  /* .contactRight {
+    width: 90%;
+  }
+  .contactLeft {
+    width: 90%;
+  } */
 }
 
 @media screen and (max-width: 768px) {
